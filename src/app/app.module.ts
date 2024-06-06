@@ -7,6 +7,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DragNDropDirective } from './directives/drag-n-drop.directive';
 import { UploadPdfComponent } from './upload-pdf/upload-pdf.component';
 import {provideHttpClient} from "@angular/common/http";
+import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+import {MarkdownModule} from "ngx-markdown";
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import {provideHttpClient} from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule,
+    FormsModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
     provideHttpClient()
