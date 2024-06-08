@@ -9,12 +9,14 @@
           <div class="col-12">
             <label>
               <input id="pdf-upload" type="file" (change)="onFileSelected($event)">
-              <img class="upload-icon pointer" src="upload.png" alt="Attach a file here">
+              <img class="upload-icon pointer" src="upload_blue.png" alt="Attach a file here">
+              <div class="col-12 mt-2 pointer">
+                <p><span class="text-primary">Click</span> to browse a pdf file or drop it here</p>
+              </div>
             </label>
+
           </div>
-          <div class="col-12 mt-2">
-            <p>Browse a pdf file or drop it here</p>
-          </div>
+
         </div>
       </div>
       <div *ngIf="selectedFile">
@@ -79,10 +81,17 @@
 
   <div class="container mt-5">
     <div *ngIf="!editable">
-      <div class="d-flex" >
-        <button class="btn btn-outline-secondary" (click)="setContentEdiatable()">Edit Markdown</button>
-        <input type="password" [(ngModel)]="apiKey" placeholder="API Key for OpenAI" class="col-2 form-control" style="width: 20%;margin-left: auto" required>
-        <button class="ms-3 btn btn-primary" style="margin-left: auto">Submit</button>
+      <div class="row" >
+        <div class="col">
+          <button class="btn btn-outline-secondary mb-3" (click)="setContentEdiatable()">Edit Markdown</button>
+        </div>
+        <div class="col" >
+          <div class="d-flex">
+            <input type="password" [(ngModel)]="apiKey" placeholder="API Key for OpenAI" class="form-control" style="width: 20rem; margin-left: auto" required>
+            <button class="ms-3 btn btn-primary" style="margin-left: auto">Submit</button>
+          </div>
+        </div>
+
       </div>
       <div markdown class="mt-3" [data]="markdownContent" ></div>
     </div >
@@ -91,7 +100,5 @@
       <textarea class="form-control mt-3" rows="50" cols="70" [(ngModel)]="markdownContent"></textarea>
     </div>
   </div>
-
-
 </div>
 
