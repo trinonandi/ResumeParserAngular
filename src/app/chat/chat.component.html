@@ -1,9 +1,14 @@
 <div class="container">
     <div class="chat-area">
         <div *ngFor="let item of chatConversation" class="chat-bubble-container" [ngClass]="item.cssClass">
-            <div class="chat-bubble">
-                {{(item.response)}}
+            <div class="chat-bubble"  *ngIf="item.response; else elseTemplate">
+                <span class="type" style="--n:100">{{item.response}}</span>
             </div>
+            <ng-template #elseTemplate>
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </ng-template>
         </div>
     </div>
     <div class="input-area">

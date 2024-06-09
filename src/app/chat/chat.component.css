@@ -9,7 +9,6 @@
 
 .chat-area {
     height: calc(100vh - 150px);
-    background-color: aliceblue;
     padding: 20px;
     overflow-y: auto;
     display: flex;
@@ -35,6 +34,20 @@
     background-color: #c5cae9;
 }
 
+/* .chat-bubble-container.bot-message > .chat-bubble {
+    color:#0000;
+    background:
+      linear-gradient(-90deg, #6c6c6c 5px,#0000 0) 10px 0,
+      linear-gradient(#6c6c6c 0 0) 0 0;
+    background-size:calc(var(--n)*1ch) 200%;
+    -webkit-background-clip:padding-box,text;
+    background-clip:padding-box,text;
+    background-repeat:no-repeat;
+    animation:
+      b .2s infinite steps(1),
+      t calc(var(--n)*.05s) steps(var(--n)) forwards;
+} */
+
 .chat-bubble {
     background-color: white;
     padding: 8px 16px; 
@@ -45,4 +58,23 @@
     overflow-wrap: break-word;
     word-break: break-word;
     box-sizing: border-box;
+}
+.type {
+    color:#0000;
+    background:
+      linear-gradient(-90deg, #6c6c6c 5px,#0000 0) 10px 0,
+      linear-gradient(#6c6c6c 0 0) 0 0;
+    background-size:calc(var(--n)*1ch) 200%;
+    -webkit-background-clip:padding-box,text;
+    background-clip:padding-box,text;
+    background-repeat:no-repeat;
+    animation:
+      b .2s infinite steps(1),
+      t calc(var(--n)*.05s) steps(var(--n)) forwards;
+}
+@keyframes t{
+    from {background-size:0 200%}
+}
+@keyframes b{
+    50% {background-position:0 -100%,0 0}
 }

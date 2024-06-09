@@ -18,4 +18,13 @@ export class HttpService {
       responseType: 'text'
     })
   }
+  
+  sendQuery(query: String) {
+    const url = `${this.baseUrl}/?query=${query}`
+
+    return this.httpClient.get(url, {
+      responseType: 'text'
+    })
+  }
+
 }
