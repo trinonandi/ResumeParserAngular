@@ -1,0 +1,48 @@
+.input-area > mat-form-field {
+    width: 100%;
+}
+
+.input-area {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.chat-area {
+    height: calc(100vh - 150px);
+    background-color: aliceblue;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+.chat-area > :first-child {
+    margin-top: auto;
+}
+
+.chat-bubble-container {
+    width: 100%;
+    display: flex;
+}
+
+.chat-bubble-container.human-message {
+    justify-content: flex-end;
+}
+
+.chat-bubble-container.human-message > .chat-bubble {
+    background-color: #c5cae9;
+}
+
+.chat-bubble {
+    background-color: white;
+    padding: 8px 16px; 
+    margin-bottom: 16px;
+    border-radius: 8px;
+    max-width: 80%; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
+}

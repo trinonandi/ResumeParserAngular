@@ -10,23 +10,35 @@ import {provideHttpClient} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {MarkdownModule} from "ngx-markdown";
+import { ChatComponent } from './chat/chat.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatInput, MatFormField, MatSuffix } from '@angular/material/input';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     DragNDropDirective,
-    UploadPdfComponent
+    UploadPdfComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     FormsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    MatInput,
+    MatFormField,
+    MatIconButton,
+    MatSuffix,
+    MatIcon
   ],
   providers: [
-    provideHttpClient()
+    provideHttpClient(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
