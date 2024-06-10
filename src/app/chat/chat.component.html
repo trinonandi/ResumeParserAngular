@@ -1,8 +1,8 @@
 <div class="container">
     <div class="chat-area">
         <div *ngFor="let item of chatConversation" class="chat-bubble-container" [ngClass]="item.cssClass">
-            <div class="chat-bubble"  *ngIf="item.response; else elseTemplate">
-                <span class="type" style="--n:100">{{item.response}}</span>
+            <div class="chat-bubble" *ngIf="item.response; else elseTemplate">
+                <span [ngClass]="{'type':item.cssClass==='bot-message'}" style="--n:100">{{item.response}}</span>
             </div>
             <ng-template #elseTemplate>
                 <div class="spinner-border text-primary" role="status">
