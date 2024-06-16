@@ -88,7 +88,7 @@
         <div class="col" >
           <div class="d-flex">
             <input type="password" [(ngModel)]="apiKey" placeholder="API Key for OpenAI" class="form-control" style="width: 20rem; margin-left: auto" required>
-            <button class="ms-3 btn btn-primary" style="margin-left: auto">Submit</button>
+            <button class="ms-3 btn btn-primary" style="margin-left: auto" (click)="startChat()">Submit</button>
           </div>
         </div>
 

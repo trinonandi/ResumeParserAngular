@@ -1,8 +1,12 @@
 <div class="container">
+    <div class="d-flex justify-content-end" *ngIf="chatConversation.length!=0">
+        <button class="ms-3 mt-3 mb-2 btn btn-primary" style="margin-left: auto;" (click)="endSession()">End Session</button>
+      </div>
     <div class="chat-area">
         <div *ngFor="let item of chatConversation" class="chat-bubble-container" [ngClass]="item.cssClass">
             <div class="chat-bubble" *ngIf="item.response; else elseTemplate">
-                <span [ngClass]="{'type':item.cssClass==='bot-message'}" [style.--n]="item.response.length">{{item.response}}</span>
+                <span [ngClass]="{'type':item.cssClass==='bot-message'}"
+                    [style.--n]="item.response.length">{{item.response}}</span>
             </div>
             <ng-template #elseTemplate>
                 <div class="spinner-border text-primary" role="status">
