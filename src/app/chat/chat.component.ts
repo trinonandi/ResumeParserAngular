@@ -1,20 +1,46 @@
-import { Component } from '@angular/core';
-import { Chat } from './chat';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
+import { Chat } from './chat';
+import { Location } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit, OnDestroy {
   question: string | null = null;
   chatConversation: Chat[] = [];
+  apiKey: string | null = null;
+  markdownContent: string = "";
+  private subscription: Subscription = new Subscription;
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private router: Router, private location: Location) { }
+  ngOnInit(): void {
+    this.subscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        if (this.location.isCurrentPathEqualTo(event.url)) {
+          // Detecting browser back button press
+          console.log("Ending session");
+          this.endSession();
+        }
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe to avoid memory leaks
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
 
   sendMessage() {
     const query = this.question;
+    console.log(this.apiKey);
 
     if (query) {
       //add human message
@@ -38,11 +64,12 @@ export class ChatComponent {
         }
       });
     }
-
   }
 
-  async delay(ms: number) {
-    await new Promise<void>(resolve => setTimeout(() => resolve(), ms)).then(() => console.log("fired"));
+  endSession() {
+    console.log("Ending session");
+    this.httpService.setParams("", null, false);
+    this.router.navigate(["/"]);
   }
 
 }
