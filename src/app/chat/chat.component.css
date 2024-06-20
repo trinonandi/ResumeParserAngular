@@ -37,11 +37,11 @@
 .chat-bubble {
     color: black;
     background-color: aliceblue;
-    padding: 8px 16px; 
+    padding: 8px 16px;
     margin-bottom: 16px;
     border-radius: 8px;
-    max-width: 80%; 
-    word-wrap: break-word; 
+    max-width: 80%;
+    word-wrap: break-word;
     overflow-wrap: break-word;
     word-break: break-word;
     box-sizing: border-box;
@@ -56,8 +56,8 @@
     background-clip:padding-box,text;
     background-repeat:no-repeat;
     animation:
-      b .2s infinite steps(1),
-      t calc(var(--n)*.05s) steps(var(--n)) forwards;
+      b .02s infinite steps(1),
+      t calc(var(--n)*.01s) steps(var(--n)) forwards;
 }
 @keyframes t{
     from {background-size:0 200%}

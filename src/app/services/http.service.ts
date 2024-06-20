@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: 'root'
 })
 export class HttpService {
-  baseUrl = "http://127.0.0.1:5000"
+  baseUrl = "https://resume-parser-app-731f4d4fba26.herokuapp.com/"
   markdownContent: string = "";
   apiKey: string | null = null;
   isChat: boolean = false;
