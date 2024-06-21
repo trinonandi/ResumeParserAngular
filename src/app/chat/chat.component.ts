@@ -12,9 +12,10 @@ import { Subscription } from 'rxjs';
 })
 export class ChatComponent implements OnInit, OnDestroy {
   question: string | null = null;
-  chatConversation: Chat[] = [];
   apiKey: string | null = null;
   markdownContent: string = "";
+  initialMessage : string = "Hi I am an AI Resume expert and I can help you to analyze resume. Try asking me some questions related to a job description, technical and non technical skills, etc.";
+  chatConversation: Chat[] = [{person: "bot", cssClass: "bot-message", response: this.initialMessage}];
   private subscription: Subscription = new Subscription;
 
   constructor(private httpService: HttpService, private router: Router, private location: Location) { }
@@ -37,6 +38,11 @@ export class ChatComponent implements OnInit, OnDestroy {
     }
   }
 
+  adjustTextAreaHeight(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+  }
 
   sendMessage() {
     const query = this.question;

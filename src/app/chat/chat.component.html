@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="d-flex justify-content-end" *ngIf="chatConversation.length!=0">
+    <div class="d-flex justify-content-end" *ngIf="chatConversation.length>1">
         <button class="ms-3 mt-3 mb-2 btn btn-primary" style="margin-left: auto;" (click)="endSession()">End Session</button>
       </div>
     <div class="chat-area">
@@ -17,8 +17,8 @@
     </div>
     <div class="input-area">
         <mat-form-field appearance="outline">
-            <input type="text" matInput placeholder="Enter your query ..." [(ngModel)]="question"
-                (keydown.enter)="sendMessage()">
+            <textarea matInput placeholder="Enter your query ..." [(ngModel)]="question"
+                (keydown.enter)="sendMessage()" rows="1" (input)="adjustTextAreaHeight($event)" class="chat-input"></textarea>
             <button mat-icon-button matSuffix (click)="sendMessage()">
                 <mat-icon>send</mat-icon>
             </button>

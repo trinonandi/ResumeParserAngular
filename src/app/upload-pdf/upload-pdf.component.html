@@ -81,14 +81,20 @@
 
   <div class="container mt-5">
     <div *ngIf="!editable">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="apiKeyInput.invalid && apiKeyInput.touched">
+        Please provide a API Key
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
       <div class="row" >
         <div class="col">
           <button class="btn btn-outline-secondary mb-3" (click)="setContentEdiatable()">Edit Markdown</button>
         </div>
         <div class="col" >
           <div class="d-flex">
-            <input type="password" [(ngModel)]="apiKey" placeholder="API Key for OpenAI" class="form-control" style="width: 20rem; margin-left: auto" required>
-            <button class="ms-3 btn btn-primary" style="margin-left: auto" (click)="startChat()">Submit</button>
+            <form #apiKeyForm="ngForm" (ngSubmit)="startChat()" class="d-flex">
+              <input type="password" [(ngModel)]="apiKey" placeholder="API Key for OpenAI" class="form-control" name="apiKey" style="width: 20rem; margin-left: auto" #apiKeyInput="ngModel" required>
+              <button class="ms-3 btn btn-primary" style="margin-left: auto" [disabled]="apiKeyForm.invalid">Submit</button>
+          </form>
           </div>
         </div>
 

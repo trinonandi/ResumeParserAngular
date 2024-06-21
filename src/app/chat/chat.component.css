@@ -8,7 +8,7 @@
 }
 
 .chat-area {
-    height: calc(100vh - 150px);
+    height: 75vh;
     padding: 20px;
     overflow-y: auto;
     display: flex;
@@ -65,3 +65,14 @@
 @keyframes b{
     50% {background-position:0 -100%,0 0}
 }
+
+.chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: hidden;
+  }
