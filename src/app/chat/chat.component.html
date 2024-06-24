@@ -6,7 +6,9 @@
         <div *ngFor="let item of chatConversation" class="chat-bubble-container" [ngClass]="item.cssClass">
             <div class="chat-bubble" *ngIf="item.response; else elseTemplate">
                 <span [ngClass]="{'type':item.cssClass==='bot-message'}"
-                    [style.--n]="item.response.length">{{item.response}}</span>
+                    [style.--n]="item.response.length" style="white-space: pre-wrap;">
+                  {{item.response}}
+                </span>
             </div>
             <ng-template #elseTemplate>
                 <div class="spinner-border text-primary" role="status">
